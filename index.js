@@ -5,6 +5,7 @@ const path = require("path");
 
 TorrentSearchApi.enablePublicProviders();
 
+const NOT_ALLOWED_FILE = ["bludv"];
 const TEMP_PATH = path.join(__dirname, "tmp");
 const BASE_DOWNLOAD_PATH = path.join(__dirname, "downloads");
 
@@ -43,7 +44,11 @@ TorrentSearchApi.search(name, "Movies", 999999).then(async (torrents) => {
       });
 
       engine.on("ready", function () {
-        const file = engine.files.find((file) => file.name.endsWith(".mp4"));
+        const file = engine.files.find(
+          (file) =>
+            file.name.endsWith(".mp4") &&
+            !NOT_ALLOWED_FILE.some((w) => file.name.includes(w))
+        );
 
         if (file) {
           var stream = file.createReadStream();
