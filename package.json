@@ -1,0 +1,11 @@
+{
+  "name": "download-movies",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Theryston",
+  "license": "MIT",
+  "dependencies": {
+    "torrent-search-api": "^2.1.4",
+    "torrent-stream": "^1.2.1"
+  }
+}
