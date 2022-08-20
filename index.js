@@ -34,6 +34,11 @@ console.log(
 TorrentSearchApi.search(name, "Movies", 999999).then(async (torrents) => {
   let tryAgain = true;
 
+  if (torrents.length === 0) {
+    console.log("No torrents found");
+    return;
+  }
+
   for (const torrent of torrents) {
     if (tryAgain) {
       const magnetUrl = await TorrentSearchApi.getMagnet(torrent);
@@ -47,7 +52,9 @@ TorrentSearchApi.search(name, "Movies", 999999).then(async (torrents) => {
         const file = engine.files.find(
           (file) =>
             file.name.endsWith(".mp4") &&
-            !NOT_ALLOWED_FILE.some((w) => file.name.includes(w))
+            !NOT_ALLOWED_FILE.some((w) =>
+              file.name.toLocaleLowerCase().includes(w)
+            )
         );
 
         if (file) {
