@@ -9,7 +9,7 @@ node index some-term
 example:
 
 ```bash
-node index no-way-home
+node index the-stranger-in-our-bed
 ```
 
 The mp4 file will be in the downloads folder. you don't have to wait for the download to reach 100% to start watching. You can delete all files from tmp folder from time to time.
